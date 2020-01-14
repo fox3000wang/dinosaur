@@ -2,11 +2,10 @@ import * as React from "react";
 import { connect } from "react-redux";
 
 import { IAppActionProps, mapAppActions } from "../../action";
-import { Background, Layout, Head, Body, Left, Center } from "./style";
+import { Background, Layout, Head, Body, Left, Center, Icon } from "./style";
 
-import { TiArrowBackOutline, TiArrowForwardOutline } from "react-icons/ti";
-
-
+// https://styled-icons.js.org/
+import { Lock } from 'styled-icons/material'
 
 function mapStateToProps() {
   return {};
@@ -25,8 +24,7 @@ class DiconPage extends React.Component<IAppActionProps, any> {
       <Background>
         <Layout>
           <Head>
-            <TiArrowBackOutline></TiArrowBackOutline>
-            <TiArrowForwardOutline></TiArrowForwardOutline>
+            <Lock size="24" ></Lock>
           </Head>
           <Body>
             <Left></Left>
