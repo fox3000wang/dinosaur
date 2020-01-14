@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+// import { Customize } from "styled-icons";
+
 export const Background = styled.div`
   background: #000;
   display: flex;
@@ -27,7 +29,8 @@ export const Head = styled.div`
 
 export const Body = styled.div`
   display: flex;
-  /* justify-content: space-between; */
+  width: 100%;
+  height: 100%;
 `;
 
 export const Left = styled.div`
@@ -36,14 +39,15 @@ export const Left = styled.div`
   width: 20%;
   background-color: #000;
   white-space: nowrap;
+  border-right: 1px solid transparent;
+  border-color: #fff;
 `;
 
 export const Center = styled.div`
   display: flex;
   flex-direction: column;
   width: 80%;
-  background: #fff;
-  border-left: 1px solid #fff;
+  background: #000;
 `;
 
 export const Icon = styled.div<{ bg: any }>`

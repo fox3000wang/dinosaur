@@ -10,6 +10,10 @@ function resolve(dir) {
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
+  // https://github.com/cornerstonejs/cornerstoneWADOImageLoader/issues/273
+  node: {
+    fs: 'empty'
+  },
   entry: {
     app: './src/index.ts',
   },
