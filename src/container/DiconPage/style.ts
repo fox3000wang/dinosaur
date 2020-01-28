@@ -33,6 +33,12 @@ export const Button = styled.div`
   font-size: 0.16rem;
   color: #fff;
   padding: 0.08rem;
+  margin: 0.05rem;
+  border-radius: 0.1rem;
+  cursor: pointer;
+  &: hover {
+    color: #aaa;
+  }
 `;
 
 export const Body = styled.div`

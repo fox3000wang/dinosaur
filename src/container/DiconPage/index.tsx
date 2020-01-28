@@ -96,13 +96,20 @@ class DiconPage extends React.Component<IAppActionProps, any> {
     cornerstone.setViewport(this.element(), viewport);
   };
 
+  verticalFlip = () => {
+    const viewport = cornerstone.getViewport(this.element());
+    viewport.vflip = !viewport.vflip;
+    cornerstone.setViewport(this.element(), viewport);
+  };
+
   render() {
     return (
       <Background>
         <Layout>
           <Head>
             {/* <Lock size="24"></Lock> */}
-            <Button onClick={this.horizontalFlip}>旋转</Button>
+            <Button onClick={this.horizontalFlip}>左右旋转</Button>
+            <Button onClick={this.verticalFlip}>上下旋转</Button>
           </Head>
           <Body>
             <Left></Left>
