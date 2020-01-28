@@ -22,27 +22,36 @@ class DiconPage extends React.Component<IAppActionProps, any> {
   }
 
   componentDidMount() {
-    const url = `https://efilm-cro.obs.cn-north-1.myhuaweicloud.com/410028/upload/b07ce1068dc649f2969489efe0bc476f/1.2.840.113619.2.203.4.2147483647.1503418397.288740/1.3.12.2.1107.5.8.2.100063.201802281756062921761.4.dcm`;
-    this.loadAndViewImage(url);
+    this.loadDicomFiles(62);
   }
 
   element = () => {
     return document.getElementById("dicomImage");
   };
 
-  loadAndViewImage = url => {
+  loadDicomFiles = i => {
+    //const url = `https://efilm-cro.obs.cn-north-1.myhuaweicloud.com/410028/upload/b07ce1068dc649f2969489efe0bc476f/1.2.840.113619.2.203.4.2147483647.1503418397.288740/1.3.12.2.1107.5.8.2.100063.201802281756062921761.4.dcm`;
+    const url = `https://efilm-cro.obs.cn-north-1.myhuaweicloud.com/410028/upload/ed4ca7042b8e4b1985a6bf45791e04c1/1.2.840.113619.2.340.3.2831204097.547.1545453872.623/1.2.840.113619.2.340.3.2831204097.547.1545453872.625.2.dcm`;
+    this.loadAndViewImage(url, i);
+  };
+
+  loadAndViewImage = (url, i) => {
     var element = this.element();
     cornerstone.enable(element);
 
     cornerstoneWADOImageLoader.wadouri.dataSetCacheManager
       .load(url, cornerstoneWADOImageLoader.internal.xhrRequest)
       .then(dataSet => {
+        // ???
         // dataset is now loaded, get the # of frames so we can build the array of imageIds
-        var numFrames = dataSet.intString("x00280008");
-        if (!numFrames) {
-          alert("Missing element NumberOfFrames (0028,0008)");
-          return;
-        }
+        //var numFrames = dataSet.intString("x00280008");
+        var numFrames = dataSet.intString("x00280008")
+          ? dataSet.intString("x00280008")
+          : 1;
+        // if (!numFrames) {
+        //   alert("Missing element NumberOfFrames (0028,0008)");
+        //   return;
+        // }
 
         const imageIds = [];
         const imageIdRoot = "wadouri:" + url;
