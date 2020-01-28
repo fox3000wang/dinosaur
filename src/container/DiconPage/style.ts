@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 // import { Customize } from "styled-icons";
 
 export const Background = styled.div`
@@ -18,13 +17,22 @@ export const Layout = styled.div`
 `;
 
 export const Head = styled.div`
-  background: #0a0;
+  background: #000;
   display: flex;
   align-items: center;
   height: 0.5rem;
   margin: 0;
   border-bottom: 1px solid transparent;
   border-color: #fff;
+`;
+
+export const Button = styled.div`
+  height: 0.4rem;
+  border: 1px solid transparent;
+  border-color: #fff;
+  font-size: 0.16rem;
+  color: #fff;
+  padding: 0.08rem;
 `;
 
 export const Body = styled.div`

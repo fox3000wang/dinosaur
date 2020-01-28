@@ -6,7 +6,7 @@ import cornerstone from "cornerstone-core";
 import dicomParser from "dicom-parser";
 
 import { IAppActionProps, mapAppActions } from "../../action";
-import { Background, Layout, Head, Body, Left, Center, Icon } from "./style";
+import { Background, Layout, Head, Body, Left, Center, Button } from "./style";
 
 function mapStateToProps() {
   return {};
@@ -26,8 +26,12 @@ class DiconPage extends React.Component<IAppActionProps, any> {
     this.loadAndViewImage(url);
   }
 
+  element = () => {
+    return document.getElementById("dicomImage");
+  };
+
   loadAndViewImage = url => {
-    var element = document.getElementById("dicomImage");
+    var element = this.element();
     cornerstone.enable(element);
 
     cornerstoneWADOImageLoader.wadouri.dataSetCacheManager
@@ -86,11 +90,20 @@ class DiconPage extends React.Component<IAppActionProps, any> {
       });
   };
 
+  horizontalFlip = () => {
+    const viewport = cornerstone.getViewport(this.element());
+    viewport.hflip = !viewport.hflip;
+    cornerstone.setViewport(this.element(), viewport);
+  };
+
   render() {
     return (
       <Background>
         <Layout>
-          <Head>{/* <Lock size="24"></Lock> */}</Head>
+          <Head>
+            {/* <Lock size="24"></Lock> */}
+            <Button onClick={this.horizontalFlip}>旋转</Button>
+          </Head>
           <Body>
             <Left></Left>
             <Center id="dicomImage"></Center>
