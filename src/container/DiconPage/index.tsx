@@ -59,29 +59,30 @@ class DiconPage extends React.Component<IAppActionProps, any> {
 
         cornerstone.loadAndCacheImage(imageIds[0]).then(
           image => {
-            console.log(image);
+            // console.log(image);
+
             // now that we have an image frame in the cornerstone cache, we can decrement
             // the reference count added by load() above when we loaded the metadata.  This way
             // cornerstone will free all memory once all imageId's are removed from the cache
             cornerstoneWADOImageLoader.wadouri.dataSetCacheManager.unload(url);
-
             cornerstone.displayImage(element, image);
-            if (this.loaded === false) {
-              // ???
-              // cornerstoneTools.wwwc.activate(element, 1); // ww/wc is the default tool for left mouse button
 
-              // Set the stack as tool state
-              cornerstoneTools.addStackStateManager(element, [
-                "stack",
-                "playClip"
-              ]);
-              cornerstoneTools.addToolState(element, "stack", stack);
-              // Start playing the clip
-              // TODO: extract the frame rate from the dataset
-              var frameRate = 10;
-              cornerstoneTools.playClip(element, frameRate);
-              this.loaded = true;
-            }
+            // if (this.loaded === false) {
+            //   // ???
+            //   // cornerstoneTools.wwwc.activate(element, 1); // ww/wc is the default tool for left mouse button
+
+            //   // Set the stack as tool state
+            //   cornerstoneTools.addStackStateManager(element, [
+            //     "stack",
+            //     "playClip"
+            //   ]);
+            //   cornerstoneTools.addToolState(element, "stack", stack);
+            //   // Start playing the clip
+            //   // TODO: extract the frame rate from the dataset
+            //   var frameRate = 10;
+            //   cornerstoneTools.playClip(element, frameRate);
+            //   this.loaded = true;
+            // }
           },
           err => {
             alert(err);
