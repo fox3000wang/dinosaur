@@ -45,6 +45,7 @@ class DiconPage extends React.Component<IAppActionProps, any> {
         // ???
         // dataset is now loaded, get the # of frames so we can build the array of imageIds
         //var numFrames = dataSet.intString("x00280008");
+        // 有些dicom文件不带帧数这个属性，不带这个属性的，就默认为1.
         var numFrames = dataSet.intString("x00280008")
           ? dataSet.intString("x00280008")
           : 1;
